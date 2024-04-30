@@ -4,7 +4,14 @@
   "description": "타입스크립트로 만든 json 파일을 이용한 신개념 orm 라이브러리입니다. ✌🙌",
   "main": "index.js",
   "scripts": {},
-  "keywords": ["json", "typescript", "javascript", "global", "orm", "js"],
+  "keywords": [
+    "json",
+    "typescript",
+    "javascript",
+    "global",
+    "orm",
+    "js"
+  ],
   "engines": {
     "node": ">=13.2.0"
   },
@@ -21,5 +28,14 @@
     "url": "https://github.com/endurejs/jsonicflow/issues"
   },
   "homepage": "https://github.com/endurejs/jsonicflow",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.12.7"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.7"
+  },
+  "peerDependencies": {
+    "@types/node": "^20.12.7"
+  }
 }
