@@ -1,0 +1,25 @@
+{
+  "name": "jsonicflow",
+  "version": "1.0.0",
+  "description": "타입스크립트로 만든 json 파일을 이용한 신개념 orm 라이브러리입니다. ✌🙌",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": ["json", "typescript", "javascript", "global", "orm", "js"],
+  "engines": {
+    "node": ">=13.2.0"
+  },
+  "author": "resforx (https://github.com/resforx)",
+  "maintainers": [
+    "endurejs <paedeogim@gmail.com> (https://github.com/endurejs)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/endurejs/jsonicflow.git"
+  },
+  "bugs": {
+    "email": "feather076@gmail.com",
+    "url": "https://github.com/endurejs/jsonicflow/issues"
+  },
+  "homepage": "https://github.com/endurejs/jsonicflow",
+  "license": "MIT"
+}
