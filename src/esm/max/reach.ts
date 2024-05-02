@@ -32,4 +32,6 @@ class RealNameJsonFlowClass implements IRealNameJsonFlowClass {
 
 interface IJsonTableClass {}
 
-class JsonTableClass implements IJsonTableClass {}
+class JsonTableClass implements IJsonTableClass {
+    
+}

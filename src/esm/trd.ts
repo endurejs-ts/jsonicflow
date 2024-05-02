@@ -1,3 +1,3 @@
 import jsflow from './lib';
 
-jsflow.init().name("users");
+const json = jsflow.init().name("");
