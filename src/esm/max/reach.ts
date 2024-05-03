@@ -2,7 +2,6 @@
 export { JsonicFlow as jsonicflow };
 
 import * as fs from 'fs';
-import path from 'path';
 
 class JsonicFlow {
     static init(): ICreateDatabaseClass {
@@ -16,7 +15,7 @@ interface ICreateDatabaseClass {
 
 class CreateDatabaseClass implements ICreateDatabaseClass {
     name(nr: string): IRealNameJsonFlowClass {
-        return new RealNameJsonFlowClass();
+        return new RealNameJsonFlowClass(nr);
     }
 }
 
@@ -25,13 +24,15 @@ interface IRealNameJsonFlowClass {
 }
 
 class RealNameJsonFlowClass implements IRealNameJsonFlowClass {
-    createDatabase(): IJsonTableClass {
-        return new JsonTableClass();
+    constructor(private namer: string) {}
+
+    createDatabase(nr: string): IJsonTableClass {
+        return new JsonTableClass(nr);
     }
 }
 
 interface IJsonTableClass {}
 
 class JsonTableClass implements IJsonTableClass {
-    
+    constructor(private navemr: string) {}
 }
