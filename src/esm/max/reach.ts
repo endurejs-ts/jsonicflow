@@ -15,6 +15,8 @@ interface ICreateDatabaseClass {
 
 class CreateDatabaseClass implements ICreateDatabaseClass {
     name(nr: string): IRealNameJsonFlowClass {
+        const jsonic = JSON.stringify({}, null, 4);
+
         return new RealNameJsonFlowClass(nr);
     }
 }
