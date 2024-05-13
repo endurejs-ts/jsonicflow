@@ -2,6 +2,7 @@
 export { JsonicFlow as jsonicflow };
 
 import * as fs from 'fs';
+import { ICreateDatabaseClass, IRealNameJsonFlowClass, IJsonTableClass } from './inter';
 
 class JsonicFlow {
     static init(): ICreateDatabaseClass {
@@ -9,20 +10,15 @@ class JsonicFlow {
     }
 }
 
-interface ICreateDatabaseClass {
-    name: (nr: string) => IRealNameJsonFlowClass;
-}
-
 class CreateDatabaseClass implements ICreateDatabaseClass {
     name(nr: string): IRealNameJsonFlowClass {
-        const jsonic = JSON.stringify({}, null, 4);
+        const jsonic = JSON.stringify({}, null, 4);\
+
+        fs.mkdir("./daa", { recursive: false }, )
+        fs.mkdir("./dist")
 
         return new RealNameJsonFlowClass(nr);
     }
-}
-
-interface IRealNameJsonFlowClass {
-    createDatabase: (name: string) => IJsonTableClass;
 }
 
 class RealNameJsonFlowClass implements IRealNameJsonFlowClass {
@@ -32,8 +28,6 @@ class RealNameJsonFlowClass implements IRealNameJsonFlowClass {
         return new JsonTableClass(nr);
     }
 }
-
-interface IJsonTableClass {}
 
 class JsonTableClass implements IJsonTableClass {
     constructor(private navemr: string) {}
