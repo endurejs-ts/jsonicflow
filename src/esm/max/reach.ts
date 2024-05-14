@@ -12,23 +12,41 @@ class JsonicFlow {
 
 class CreateDatabaseClass implements ICreateDatabaseClass {
     name(nr: string): IRealNameJsonFlowClass {
-        const jsonic = JSON.stringify({}, null, 4);\
+        const k: Record<string, any> = {};
+        const j = JSON.stringify(k, null, 4);
 
-        fs.mkdir("./daa", { recursive: false }, )
-        fs.mkdir("./dist")
+        if (!fs.existsSync(nr)) {
+            fs.mkdirSync(nr);
+            fs.writeFileSync(`${nr}/types.json`, j, "utf-8");
+            fs.writeFileSync(`${nr}/values.json`, j, "utf-8");
+        }
 
-        return new RealNameJsonFlowClass(nr);
+        else {
+            throw new Error("file already exist.");
+        }
+
+        return new RealNameJsonFlowClass(k);
     }
 }
 
 class RealNameJsonFlowClass implements IRealNameJsonFlowClass {
-    constructor(private namer: string) {}
+    constructor(private namer: Record<string, any>) {}
 
     createDatabase(nr: string): IJsonTableClass {
+        if (!(nr in this.namer)) {
+            this.namer[nr] = {}
+        }
+        
+        else {
+            throw new Error("db already exist");
+        }
+
         return new JsonTableClass(nr);
     }
 }
 
 class JsonTableClass implements IJsonTableClass {
     constructor(private navemr: string) {}
+
+    createTable() {}
 }
