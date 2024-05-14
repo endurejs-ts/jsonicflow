@@ -52,13 +52,26 @@ class RealNameJsonFlowClass implements IRealNameJsonFlowClass {
             throw new Error("db already exist");
         }
 
-        return new JsonTableClass(this.namer);
+        return new JsonTableClass(this.namer, this.nr);
     }
 }
 
 
 class JsonTableClass implements IJsonTableClass {
-    constructor(private navemr: Record<string, any>) {}
+    constructor(private nmr: Record<string, any>, private nnr: string) {}
 
     createTable() {}
+
+    use() {
+        const tp = `${this.nnr}/types.json`;
+        const tc = JSON.parse(fs.readFileSync(tp, "utf-8"));
+
+        if (tc.use !== false) {
+            throw new Error("db already used");
+        }
+
+        else {
+            tc.use = true;
+        }
+    }
 }
