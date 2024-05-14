@@ -10,3 +10,6 @@ import endure from './lib';
 // create()
 
 // endure.create("")
+
+const json = endure.init().name("users");
+const db = json.createDatabase("mydb");
