@@ -2,7 +2,7 @@
 export { JsonicFlow as jsonicflow };
 
 import * as fs from 'fs';
-import { ICreateDatabaseClass, IRealNameJsonFlowClass, IJsonTableClass } from './inter';
+import { ICreateDatabaseClass, IRealNameJsonFlowClass, IJsonTableClass, IJsonicTableSet } from './inter';
 
 class JsonicFlow {
     static init(): ICreateDatabaseClass {
@@ -48,30 +48,61 @@ class RealNameJsonFlowClass implements IRealNameJsonFlowClass {
             // 수정된 내용을 파일에 다시 씀
             fs.writeFileSync(typesPath, JSON.stringify(typesContent, null, 4), "utf-8");
             fs.writeFileSync(valuesPath, JSON.stringify(valuesContent, null, 4), "utf-8");
-        } else {
+        }
+        
+        else {
             throw new Error("db already exist");
         }
 
-        return new JsonTableClass(this.namer, this.nr);
+        return new JsonTableClass(this.namer, this.nr, nr);
     }
 }
 
 
 class JsonTableClass implements IJsonTableClass {
-    constructor(private nmr: Record<string, any>, private nnr: string) {}
-
-    createTable() {}
-
+    constructor(private nmr: Record<string, any>, private nnr: string, private supernr: string) {}
+    
     use() {
         const tp = `${this.nnr}/types.json`;
         const tc = JSON.parse(fs.readFileSync(tp, "utf-8"));
-
-        if (tc.use !== false) {
+        let uses: boolean = tc.use;
+        
+        if (uses !== false) {
             throw new Error("db already used");
         }
-
+        
         else {
-            tc.use = true;
+            uses = true;
         }
     }
+
+    unuse() {
+        const tp = `${this.nnr}/types.json`;
+        const tc = JSON.parse(fs.readFileSync(tp, "utf-8"));
+        let uses: boolean = tc.use;
+        
+        if (uses !== true) {
+            throw new Error("db not used");
+        }
+        
+        else {
+            uses = false;
+        }
+    }
+
+    createTable(nvr: string): IJsonicTableSet {
+        // const tp = `${this.nnr}/types.json`;
+        // const tc = JSON.parse(fs.readFileSync(tp, "utf-8"));
+        // const db = tc[this.supernr];
+
+        // if (!(nvr in db)) {
+
+        // }
+
+        return new JsonicTableSet(nvr);
+    }
+}
+
+class JsonicTableSet {
+    constructor(private nvnr: string) {}
 }

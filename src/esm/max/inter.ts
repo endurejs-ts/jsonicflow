@@ -13,4 +13,8 @@ export interface IRealNameJsonFlowClass {
     createDatabase: (name: string) => IJsonTableClass;
 }
 
-export interface IJsonTableClass {}
+export interface IJsonTableClass {
+    createTable: (nvr: string) => IJsonicTableSet
+}
+
+export interface IJsonicTableSet {}
