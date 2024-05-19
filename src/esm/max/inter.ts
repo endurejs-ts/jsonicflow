@@ -14,7 +14,16 @@ export interface IRealNameJsonFlowClass {
 }
 
 export interface IJsonTableClass {
-    createTable: (nvr: string) => IJsonicTableSet
+    createTable: (nvr: string, {}:{}) => IJsonicTableSet
 }
 
 export interface IJsonicTableSet {}
+
+type tableInsert =
+    "NOT" |
+    "NULL" |
+    "KEY" |
+    "PRIMARY" |
+    "FOREIGN" |
+    "UNIQUE" |
+    "AUTO_INCREMENT"

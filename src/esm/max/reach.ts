@@ -90,7 +90,7 @@ class JsonTableClass implements IJsonTableClass {
         }
     }
 
-    createTable(nvr: string): IJsonicTableSet {
+    createTable(nvr: string, {}: {}): IJsonicTableSet {
         // const tp = `${this.nnr}/types.json`;
         // const tc = JSON.parse(fs.readFileSync(tp, "utf-8"));
         // const db = tc[this.supernr];
