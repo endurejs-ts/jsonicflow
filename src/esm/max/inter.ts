@@ -27,3 +27,5 @@ type tableInsert =
     "FOREIGN" |
     "UNIQUE" |
     "AUTO_INCREMENT"
+;
+
